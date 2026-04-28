@@ -42,7 +42,7 @@
 
 # Incremental Load:   
 ![](Notes/incremental_load.png)
-
+ 
         Incremental loading in data engineering is the process of loading only new, updated, or deleted data since the last successful data integration, rather than reprocessing the entire dataset. This technique reduces data volume, speeds up ET/ELT pipelines, and lowers costs.
 
 # Macros:   
