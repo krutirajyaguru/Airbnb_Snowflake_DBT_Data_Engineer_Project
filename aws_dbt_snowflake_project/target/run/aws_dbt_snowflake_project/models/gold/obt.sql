@@ -1,0 +1,43 @@
+
+  
+    
+
+create or replace transient table AIRBNB.gold.obt
+    
+    
+    
+    as (
+    
+SELECT 
+    
+        SILVER_BOOKINGS.*,
+    
+        SILVER_LISTINGS.HOST_ID, SILVER_LISTINGS.PROPERTY_TYPE, SILVER_LISTINGS.ROOM_TYPE, 
+                    SILVER_LISTINGS.CITY, SILVER_LISTINGS.COUNTRY, SILVER_LISTINGS.ACCOMMODATES, 
+                    SILVER_LISTINGS.BEDROOMS, SILVER_LISTINGS.BATHROOMS, SILVER_LISTINGS.PRICE_PER_NIGHT, 
+                    SILVER_LISTINGS.PRICE_PER_NIGHT_TAG, SILVER_LISTINGS.CREATED_AT AS LISTING_CREATED_AT,
+    
+        SILVER_HOSTS.HOST_NAME, SILVER_HOSTS.HOST_SINCE, SILVER_HOSTS.IS_SUPERHOST, 
+        SILVER_HOSTS.RESPONSE_RATE, SILVER_HOSTS.RESPONSE_RATE_QUALITY, SILVER_HOSTS.CREATED_AT AS HOST_CREATED_AT
+    
+FROM
+    
+        
+            AIRBNB.SILVER.SILVER_BOOKINGS AS SILVER_BOOKINGS
+        
+    
+        
+            LEFT JOIN AIRBNB.SILVER.SILVER_LISTINGS AS SILVER_LISTINGS
+            ON silver_bookings.listing_id = silver_listings.listing_id
+            
+    
+        
+            LEFT JOIN AIRBNB.SILVER.SILVER_HOSTS AS SILVER_HOSTS
+            ON silver_listings.host_id = silver_hosts.host_id
+            
+    
+    )
+;
+
+
+  

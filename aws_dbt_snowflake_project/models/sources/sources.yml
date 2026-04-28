@@ -1,0 +1,9 @@
+sources:
+  - name: staging 
+  # best practise: schema name
+    database: airbnb  
+    schema: staging  
+    tables:
+      - name: listings
+      - name: bookings
+      - name: hosts

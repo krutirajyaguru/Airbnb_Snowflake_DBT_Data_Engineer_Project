@@ -1,0 +1,26 @@
+
+  
+    
+
+create or replace transient table AIRBNB.silver.silver_bookings
+    
+    
+    
+    as (
+
+SELECT 
+    BOOKING_ID, 
+    LISTING_ID, 
+    BOOKING_DATE,
+    
+    round( NIGHTS_BOOKED * BOOKING_AMOUNT, 2)
+ + CLEANING_FEE + SERVICE_FEE AS TOTAL_AMOUNT,
+    BOOKING_STATUS,
+    CREATED_AT
+FROM 
+    AIRBNB.bronze.bronze_bookings
+    )
+;
+
+
+  
